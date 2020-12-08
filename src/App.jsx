@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import store from './Store/globalStore';
+
+import Router from './Router';
 
 class App extends Component {
     render() {
         return (
-            <div>
-                Check connection
-            </div>
+            <Provider store={store}>
+                <Router />
+            </Provider>
         );
     }
 }
