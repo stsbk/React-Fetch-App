@@ -14,17 +14,17 @@ export const usersReducer = (store = initialState, { type, payload }) => {
     switch (type) {
         case FETCH_USERS_START:
             return {
-                ...store,
+                ...initialState,
                 loading: true,
             };
         case FETCH_USERS_SUCCESS:
             return {
-                ...store,
+                ...initialState,
                 data: payload,
             };
         case FETCH_USERS_ERROR:
             return {
-                ...store,
+                ...initialState,
                 error: payload,
             };
         default:
