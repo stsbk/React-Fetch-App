@@ -3,21 +3,20 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { usersFetch } from '../../Store/Users/action';
 
+// eslint-disable-next-line
 const Users = () => {
-    // const authToken = useSelector((store) => store.localStorage.authorizationToken);
+    const authToken = useSelector((store) => store.localStorage.authorizationToken);
     const usersData = useSelector((store) => store.users.data);
     const usersLoading = useSelector((store) => store.users.loading);
     const dispatch = useDispatch();
-
-    console.log(usersData);
 
     useEffect(() => {
         dispatch(usersFetch());
     }, []);
 
-    // if (!authToken) {
-    //     return 'Not authorized!';
-    // }
+    if (!authToken) {
+        return 'Not authorized!';
+    }
 
     if (usersLoading) {
         return <h1>Loading...</h1>;
@@ -31,6 +30,8 @@ const Users = () => {
             {usersData.map((user) => (
                 <>
                     <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+                    <button type="button">Change</button>
+                    <button type="button">Delete</button>
                     <br />
                 </>
             ))}
