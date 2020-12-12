@@ -23,11 +23,6 @@ const Home = () => {
                             Users
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/todos">
-                            Todos
-                        </NavLink>
-                    </li>
                 </ul>
             )}
             <form onSubmit={handleSubmit(onSubmit)}>

@@ -5,6 +5,12 @@ import {
     DELETE_USER_START,
     DELETE_USER_SUCCESS,
     DELETE_USER_FAILURE,
+    CHANGE_USER_START,
+    CHANGE_USER_SUCCESS,
+    CHANGE_USER_FAILURE,
+    ADD_USER_START,
+    ADD_USER_SUCCESS,
+    ADD_USER_FAILURE,
 } from './types';
 import UsersService from '../../Services/UsersService';
 
@@ -28,15 +34,49 @@ export const usersFetch = () => (dispatch) => {
 export const deleteUser = (id) => (dispatch) => {
     dispatch({ type: DELETE_USER_START, payload: id });
     UsersService.deleteUser(id)
-        .then((resp) => {
+        .then(() => {
             dispatch({
                 type: DELETE_USER_SUCCESS,
-                payload: resp,
+                payload: id,
             });
         })
         .catch((e) => {
             dispatch({
                 type: DELETE_USER_FAILURE,
+                payload: e,
+            });
+        });
+};
+
+export const changeUserName = (id, params) => (dispatch) => {
+    dispatch({ type: CHANGE_USER_START, payload: id });
+    UsersService.changeUserName(id, params)
+        .then((resp) => {
+            dispatch({
+                type: CHANGE_USER_SUCCESS,
+                payload: resp,
+            });
+        })
+        .catch((e) => {
+            dispatch({
+                type: CHANGE_USER_FAILURE,
+                payload: e,
+            });
+        });
+};
+
+export const addUser = (params) => (dispatch) => {
+    dispatch({ type: ADD_USER_START });
+    UsersService.addNewUser(params)
+        .then((resp) => {
+            dispatch({
+                type: ADD_USER_SUCCESS,
+                payload: resp,
+            });
+        })
+        .catch((e) => {
+            dispatch({
+                type: ADD_USER_FAILURE,
                 payload: e,
             });
         });
