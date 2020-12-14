@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const Photo = ({ title, url }) => (
     <div>
         <img src={url} alt="thumbnail" />
+        <br />
         <span>{title}</span>
     </div>
 );
