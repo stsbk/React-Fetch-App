@@ -61,6 +61,7 @@ const Users = () => {
             {usersData.map((user) => (
                 <Fragment key={user.id}>
                     <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+                    <br />
                     <button type="button" onClick={() => editUserName(user.id, { ...user, username: 'Noname' })}>Change</button>
                     <button type="button" onClick={() => deleteItem(user.id)}>Delete</button>
                     { loadingItem === user.id && <span>Loading...</span> }

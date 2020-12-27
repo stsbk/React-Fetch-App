@@ -28,11 +28,6 @@ const Home = () => {
                             Photos
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/posts">
-                            Posts
-                        </NavLink>
-                    </li>
                 </ul>
             )}
             <form onSubmit={handleSubmit(onSubmit)}>
